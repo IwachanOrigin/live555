@@ -303,3 +303,15 @@ Visual Studio 2022
 # cmake --build vs2022 --config Release
 ```
 
+# For Build
+
+## NOTE
+Perhaps, when building with MONOLITH, the test program does not compile through.  
+
+## Monolith build
+cmake -S . -B build/vs2022 -G "Visual Studio 17 2022" -A x64 -D LIVE555_ENABLE_OPENSSL=ON -D LIVE555_BUILD_EXAMPLES=OFF -D LIVE555_MONOLITH_BUILD=ON -D CMAKE_PREFIX_PATH="C:\software\OpenSSL-Win64"
+
+## Static build
+cmake -S . -B build/vs2022 -G "Visual Studio 17 2022" -A x64 -D LIVE555_ENABLE_OPENSSL=ON -D LIVE555_BUILD_EXAMPLES=ON -D LIVE555_MONOLITH_BUILD=OFF -D CMAKE_PREFIX_PATH="C:\software\OpenSSL-Win64"
+
+

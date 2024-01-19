@@ -31,8 +31,12 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 #include "DigestAuthentication.hh"
 #endif
 
-// Possible states in the "INVITE" transition diagram (RFC 3261, Figure 5)
-enum inviteClientState { Calling, Proceeding, Completed, Terminated };
+namespace SIP_CLIENT
+{
+  // Possible states in the "INVITE" transition diagram (RFC 3261, Figure 5)
+  enum inviteClientState { Calling, Proceeding, Completed, Terminated };
+}
+using namespace SIP_CLIENT;
 
 class LIVEMEDIA_API SIPClient: public Medium {
 public:
