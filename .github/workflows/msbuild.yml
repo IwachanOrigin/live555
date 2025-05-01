@@ -99,10 +99,12 @@ jobs:
         git clone --depth 1 https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         .\bootstrap-vcpkg.bat
-        .\vcpkg.exe --triplet x86-windows-static integrate install
-        .\vcpkg.exe install openssl:x86-windows-static
-        .\vcpkg.exe install openssl-windows:x86-windows-static
-        set OPENSSL_ROOT_DIR="./installed/x86-windows-static"
+        .\vcpkg.exe --triplet x86-windows integrate install
+        .\vcpkg.exe install openssl:x86-windows
+        # .\vcpkg.exe install openssl:x86-windows-static
+        # .\vcpkg.exe install openssl-windows:x86-windows-static
+        set OPENSSL_ROOT_DIR="./installed/x86-windows"
+        # set OPENSSL_ROOT_DIR="./installed/x86-windows-static"
 
 
 #     - name: Configure CMake Static Library
@@ -122,7 +124,7 @@ jobs:
       #-DOPENSSL_ROOT_DIR="D:/vcpkg/installed/x64-windows" 
       run: 
         #cmake -B ${{github.workspace}}/windows -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=${{env.OUT_PATH}} -DLIVE555_ENABLE_OPENSSL=OFF -DLIVE555_BUILD_EXAMPLES=OFF -DCMAKE_TOOLCHAIN_FILE="./vcpkg/scripts/buildsystems/vcpkg.cmake"          
-        cmake -B ${{github.workspace}}/windows -A Win32 -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=${{env.OUT_PATH}} -DLIVE555_ENABLE_OPENSSL=ON -DLIVE555_BUILD_EXAMPLES=OFF -DCMAKE_TOOLCHAIN_FILE="./vcpkg/scripts/buildsystems/vcpkg.cmake" -DCMAKE_PREFIX_PATH="./vcpkg/installed/x86-windows-static" -DOPENSSL_ROOT_DIR="./vcpkg/installed/x86-windows-static" -DVCPKG_TARGET_TRIPLET=x86-windows-static
+        cmake -B ${{github.workspace}}/windows -A Win32 -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=${{env.OUT_PATH}} -DLIVE555_ENABLE_OPENSSL=ON -DLIVE555_BUILD_EXAMPLES=OFF -DCMAKE_TOOLCHAIN_FILE="./vcpkg/scripts/buildsystems/vcpkg.cmake" -DCMAKE_PREFIX_PATH="./vcpkg/installed/x86-windows" -DOPENSSL_ROOT_DIR="./vcpkg/installed/x86-windows" -DVCPKG_TARGET_TRIPLET=x86-windows
 #         cmake -B ${{github.workspace}}/windows -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=${{env.OUT_PATH}} -DLIVE555_ENABLE_OPENSSL=OFF -DLIVE555_BUILD_EXAMPLES=OFF -DCMAKE_TOOLCHAIN_FILE="./vcpkg/scripts/buildsystems/vcpkg.cmake"
         
     - name: Build
@@ -214,10 +216,11 @@ jobs:
         git clone --depth 1 https://github.com/Microsoft/vcpkg.git
         cd vcpkg
         .\bootstrap-vcpkg.bat
-        .\vcpkg.exe --triplet x86-windows-static integrate install
-        .\vcpkg.exe install openssl:x86-windows-static
-        .\vcpkg.exe install openssl-windows:x86-windows
-        set OPENSSL_ROOT_DIR="./installed/x86-windows"
+        .\vcpkg.exe --triplet x86-windows integrate install
+        .\vcpkg.exe install openssl:x86-windows
+        # .\vcpkg.exe install openssl:x86-windows-static
+        # .\vcpkg.exe install openssl-windows:x86-windows
+        # set OPENSSL_ROOT_DIR="./installed/x86-windows"
 
 
 #     - name: Configure CMake Static Library
@@ -331,9 +334,11 @@ jobs:
         cd vcpkg
         .\bootstrap-vcpkg.bat
         .\vcpkg.exe integrate install
-        .\vcpkg.exe install openssl:x64-windows-static
-        .\vcpkg.exe install openssl-windows:x64-windows-static
-        set OPENSSL_ROOT_DIR="./installed/x64-windows-static"
+        .\vcpkg.exe install openssl:x64-windows
+        # .\vcpkg.exe install openssl:x64-windows-static
+        # .\vcpkg.exe install openssl-windows:x64-windows-static
+        set OPENSSL_ROOT_DIR="./installed/x64-windows"
+        # set OPENSSL_ROOT_DIR="./installed/x64-windows-static"
 
 
 #     - name: Configure CMake Static Library
@@ -353,7 +358,7 @@ jobs:
       #-DOPENSSL_ROOT_DIR="D:/vcpkg/installed/x64-windows" 
       run: 
         #cmake -B ${{github.workspace}}/windows -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=${{env.OUT_PATH}} -DLIVE555_ENABLE_OPENSSL=OFF -DLIVE555_BUILD_EXAMPLES=OFF -DCMAKE_TOOLCHAIN_FILE="./vcpkg/scripts/buildsystems/vcpkg.cmake"          
-        cmake -B ${{github.workspace}}/windows -A x64 -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=${{env.OUT_PATH}} -DLIVE555_ENABLE_OPENSSL=ON -DLIVE555_BUILD_EXAMPLES=OFF -DCMAKE_TOOLCHAIN_FILE="./vcpkg/scripts/buildsystems/vcpkg.cmake" -DCMAKE_PREFIX_PATH="./vcpkg/installed/x64-windows-static" -DOPENSSL_ROOT_DIR="./vcpkg/installed/x64-windows-static" -DVCPKG_TARGET_TRIPLET=x64-windows-static
+        cmake -B ${{github.workspace}}/windows -A x64 -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=${{env.OUT_PATH}} -DLIVE555_ENABLE_OPENSSL=ON -DLIVE555_BUILD_EXAMPLES=OFF -DCMAKE_TOOLCHAIN_FILE="./vcpkg/scripts/buildsystems/vcpkg.cmake" -DCMAKE_PREFIX_PATH="./vcpkg/installed/x64-windows" -DOPENSSL_ROOT_DIR="./vcpkg/installed/x64-windows" -DVCPKG_TARGET_TRIPLET=x64-windows
 #         cmake -B ${{github.workspace}}/windows -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=${{env.OUT_PATH}} -DLIVE555_ENABLE_OPENSSL=OFF -DLIVE555_BUILD_EXAMPLES=OFF -DCMAKE_TOOLCHAIN_FILE="./vcpkg/scripts/buildsystems/vcpkg.cmake"
         
     - name: Build
@@ -447,7 +452,7 @@ jobs:
         .\bootstrap-vcpkg.bat
         .\vcpkg.exe integrate install
         .\vcpkg.exe install openssl:x64-windows
-        .\vcpkg.exe install openssl-windows:x64-windows
+        # .\vcpkg.exe install openssl-windows:x64-windows
         set OPENSSL_ROOT_DIR="./installed/x64-windows"
 
 
